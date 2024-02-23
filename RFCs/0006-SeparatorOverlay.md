@@ -76,8 +76,9 @@ Entry overlay
   }
 }
 ```
-### Examples of a delimiter overlay.
-Delimiters and escape characters can be provided for some or all of the array attributes in a schema. Delimiters/escape characters may be different for each attribute.
+### Examples of a separator overlay.
+Delimiters and escape characters can be provided for some or all of the array attributes in a schema. Separator characters may be different for each attribute.
+Note that JSON requires its own separator, so that an escape character "\\" must itself be escaped in JSON.
 ```
 {
   "capture_base": "Etszl9LgLUjllI950rd2lO6rF5-BP_jGzXGBPkFZCZFA",
@@ -122,7 +123,7 @@ Example: arrays in a csv file where both delimiters are commas.
 When Excel exports this data, it is exported as strings with ""'s around each array entry: 
 |height|weight|name|
 |---|---|---|
-|5,2,3,4|6,6,5,3|sample_1
+|5,2,3,4|6,6,5,3|sample_1|
 
 Excel generated .csv file:
 ```
