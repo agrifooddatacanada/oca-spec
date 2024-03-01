@@ -92,30 +92,6 @@ The Capture Base consists of the following attributes:
 - [ Attributes ](#attributes)
 - [ Flagged attributes ](#flagged-attributes)
 
-```json
-{
-   "type":"spec/capture_base/1.0",
-   "classification":"GICS:45102010",
-   "attributes":{
-      "dateOfBirth":"DateTime",
-      "documentNumber":"Text",
-      "documentType":"Array[Text]",
-      "fullName":"Text",
-      "height":"Numeric",
-      "issuingState":"Text",
-      "photoImage":"Binary",
-      "sex":"Text"
-   },
-   "flagged_attributes":[
-      "documentNumber",
-      "fullName",
-      "dateOfBirth",
-      "photoImage"
-   ]
-}
-```
-_Example 1. Code snippet for a Capture Base._
-
 #### Type
 The `type` attribute identifies the schema object type.
 
@@ -174,6 +150,39 @@ Any attributes defined in a Capture Base that may contain identifying informatio
 
 The Blinding Identity Taxonomy (BIT) \[[KAN2020](#ref-KAN2020)\] is a practical tool for any practitioner whose organisation has custody or control of a dataset containing identifiable information about entities, including a natural person, organisation, or device with signing capabilities that make that entity uniquely identifiable. For example, data protection officers and schema issuers can use the BIT to flag a list of elements which require cryptographic encoding to reduce the risk of identifying a data principal.
 
+#### Example OCA File syntax
+
+
+#### Example OCA JSON serialization
+
+```json
+{
+   "type":"spec/capture_base/1.0",
+   "classification":"GICS:45102010",
+   "attributes":{
+      "dateOfBirth":"DateTime",
+      "documentNumber":"Text",
+      "documentType":"Array[Text]",
+      "fullName":"Text",
+      "height":"Numeric",
+      "issuingState":"Text",
+      "photoImage":"Binary",
+      "sex":"Text"
+   },
+   "flagged_attributes":[
+      "documentNumber",
+      "fullName",
+      "dateOfBirth",
+      "photoImage"
+   ]
+}
+```
+_Example 1. Code snippet for a Capture Base._
+
+#### Rules for Capture Base
+A list of MUST and MAY statements?
+
+
 ### Overlays
 Overlays are cryptographically-linked objects that provide layers of task-oriented definitional or contextual information to a Capture Base. Any actor interacting with a published Capture Base can use Overlays to add metadata to the underlying object, transform how information is displayed to a viewer, or guide an agent in applying a custom process to captured data.
 
@@ -201,6 +210,8 @@ _Listing: ABNF core rules_
 The International Organization for Standardization (ISO) \[[ISO](#ref-ISO)\] has standardised two lists of language-related codes: the language codes called ISO 639-1 alpha-2 \[[ISO639](#ref-ISO639)\] codes ("Codes for the representation of names of languages") and ISO 3166-1 alpha-2 \[[ISO3166](#ref-ISO3166)\] codes ("Codes for the representation of names of countries"). Both consist of two letters. The language code is written in lowercase while the country code is written in uppercase. However, both ISO classifications may be combined to differentiate regional languages.
 
 The `language` attribute MUST contain either the two-letter language code (lowercase) for a national language or the combined language (lowercase)/country (uppercase) code for a regional language or locale.
+
+The `language` attribute MAY contain a list of one or more language/country codes for each overlay separated by a comma. The language/country code combination MUST be unique in each type of overlay.
 
 ![Table 1](/images/spec-table1.png)
 _Table 1. An example of ISO standard values for language and combined language/country codes._
